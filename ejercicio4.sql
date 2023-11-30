@@ -1,0 +1,76 @@
+/*-------------------------------------------------------------*/
+/*                          Ejercicio 4                        */
+/*-------------------------------------------------------------*/
+CREATE DATABASE ejercicio4;
+use ejercicio4
+
+CREATE TABLE EMPLEADO(
+    Dni INT NOT NULL PRIMARY KEY,
+    NombrePila VARCHAR(45),
+    Apellido VARCHAR(45),
+    FechaNac VARCHAR(45),
+    Direcc VARCHAR(45),
+)ENGINE = InnoDB;
+
+CREATE TABLE SECRETARIA(
+    Dni INT NOT NULL,
+    PulsacionesPorMinuto VARCHAR(45),
+    PRIMARY KEY (Dni),
+    FOREIGN KEY (Dni) REFERENCES EMPLEADO (Dni)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)ENGINE = InnoDB;
+
+CREATE TABLE TECNICO(
+    Dni INT NOT NULL,
+    GradoE VARCHAR(45),
+    PRIMARY KEY (Dni),
+    FOREIGN KEY (Dni) REFERENCES EMPLEADO (Dni)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)ENGINE = InnoDB;
+
+CREATE TABLE INGENIERO(
+    Dni INT NOT NULL,
+    Especializacion VARCHAR(45),
+    PRIMARY KEY (Dni),
+    FOREIGN KEY (Dni) REFERENCES EMPLEADO (Dni)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)ENGINE = InnoDB;
+
+CREATE TABLE DIRECTOR(
+    idDirector INT NOT NULL PRIMARY KEY,
+)ENGINE = InnoDB;
+
+CREATE TABLE TRABJO_FIJO(
+    Dni INT NOT NULL,
+    Salario VARCHAR(45),
+    PRIMARY KEY (Dni),
+    FOREIGN KEY (Dni) REFERENCES EMPLEADO (Dni)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)ENGINE = InnoDB;
+
+CREATE TABLE TRABAJO_TEMPORAL(
+    Dni INT NOT NULL,
+    EscalaSueldo VARCHAR(45),
+    PRIMARY KEY (Dni),
+    FOREIGN KEY (Dni) REFERENCES EMPLEADO (Dni)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE   
+)ENGINE = InnoDB;
+
+CREATE TABLE PROYECTO(
+    No_Proyecto INT NOT NULL PRIMARY KEY,
+    Num_Proyecto VARCHAR(45),
+    FechaI VARCHAR(45),
+    FechaF VARCHAR(45)
+)ENGINE = InnoDB;
+
+CREATE TABLE SINDICATO(
+    cveC INT NOT NULL PRIMARY KEY,
+    nomC VARCHAR(45),
+    FcehaC VARCHAR(45),
+    Direcc VARCHAR(45)
+)ENGINE = InnoDB;
